@@ -1,0 +1,59 @@
+{
+    "manifesto": {
+        "en": "Kepce Labs is a small place where ideas are turned into working products.",
+        "tr": "Kepce Labs, fikirlerin çalışan ürünlere dönüştüğü küçük bir yerdir."
+    },
+    "subtitle": {
+        "en": "Experiments, apps and tools built with curiosity.",
+        "tr": "Merakla inşa edilmiş deneyler, uygulamalar ve araçlar."
+    },
+    "about": {
+        "title": {
+            "en": "About Kepce Labs",
+            "tr": "Kepce Labs Hakkında"
+        },
+        "paragraphs": {
+            "en": [
+                "Kepce Labs exists because building things is more interesting than talking about them.",
+                "This is where experiments become products, ideas get tested, and curiosity drives the work. Not everything here is finished. That's the point.",
+                "Each project is built with care, attention to detail, and a focus on creating something useful. Some will grow, some will stay small, and some might be archived. All of them represent learning and making.",
+                "Named after a curious cat, Kepce Labs carries that same spirit of exploration and playfulness into every project."
+            ],
+            "tr": [
+                "Kepce Labs, bir şeyler yapmak onlar hakkında konuşmaktan daha ilginç olduğu için var.",
+                "Burası deneylerin ürün olduğu, fikirlerin test edildiği ve merakın işi yönlendirdiği bir yer. Buradaki her şey bitmedi. Mesele de bu zaten.",
+                "Her proje özenle, detaylara dikkat edilerek ve kullanışlı bir şey yaratma odağıyla inşa ediliyor. Bazıları büyüyecek, bazıları küçük kalacak, bazıları arşivlenebilir. Hepsi öğrenmeyi ve yapmayı temsil ediyor.",
+                "Meraklı bir kedinin adını taşıyan Kepce Labs, aynı keşif ve oyunculuk ruhunu her projeye taşıyor."
+            ]
+        }
+    },
+    "contact": {
+        "title": {
+            "en": "Get in Touch",
+            "tr": "İletişim"
+        },
+        "description": {
+            "en": "Feel free to reach out for collaborations, questions, or just to say hi.",
+            "tr": "İşbirliği, sorular veya sadece merhaba demek için çekinmeden iletişime geçin."
+        }
+    },
+    "updates": {
+        "title": {
+            "en": "Updates",
+            "tr": "Güncellemeler"
+        },
+        "description": {
+            "en": "A log of what's being built, learned, and explored.",
+            "tr": "Yapılanların, öğrenilenlerin ve keşfedilenlerin kaydı."
+        },
+        "items": [
+            {
+                "date": "2025-12-16",
+                "content": {
+                    "en": "Launched Kepce Labs website. Starting with KepGuess as the first project.",
+                    "tr": "Kepce Labs web sitesi yayında. İlk proje olarak KepGuess ile başlıyoruz."
+                }
+            }
+        ]
+    }
+}

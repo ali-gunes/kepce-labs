@@ -1,0 +1,17 @@
+{
+  "projects": [
+    {
+      "id": "kepguess",
+      "name": "KepGuess",
+      "description": {
+        "en": "A fun prediction game where you can bet on outcomes and test your intuition.",
+        "tr": "Tahminlerde bulunup sezgilerinizi test edebileceğiniz eğlenceli bir tahmin oyunu."
+      },
+      "status": "active",
+      "platforms": ["ios", "android"],
+      "accentColor": "#FF6B6B",
+      "hasDocuments": true,
+      "url": "/kepguess"
+    }
+  ]
+}
