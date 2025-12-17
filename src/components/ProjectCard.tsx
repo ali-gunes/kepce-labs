@@ -21,7 +21,8 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, locale }: ProjectCardProps) {
     const description = project.description[locale];
-    const href = project.url || `/${locale}/projects/${project.id}`;
+    const href = project.url ? `/${locale}${project.url}` : `/${locale}/projects/${project.id}`;
+
 
     return (
         <Link href={href} style={{ textDecoration: 'none' }}>
