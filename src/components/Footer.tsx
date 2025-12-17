@@ -8,14 +8,14 @@ const footerContent = {
     en: {
         copyright: '© 2025 Kepce Labs. All rights reserved.',
         links: [
-            { name: 'GitHub', href: 'https://github.com' },
+            { name: 'GitHub', href: 'https://github.com/ali-gunes' },
             { name: 'Email', href: 'mailto:hello@kepcelabs.com' },
         ],
     },
     tr: {
         copyright: '© 2025 Kepce Labs. Tüm hakları saklıdır.',
         links: [
-            { name: 'GitHub', href: 'https://github.com' },
+            { name: 'GitHub', href: 'https://github.com/ali-gunes' },
             { name: 'E-posta', href: 'mailto:hello@kepcelabs.com' },
         ],
     },

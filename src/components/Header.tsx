@@ -12,18 +12,18 @@ interface HeaderProps {
 
 const navigation = {
     en: [
-        { name: 'Home', href: '', short: 'Home' },
-        { name: 'Projects', href: '/projects', short: 'Projects' },
-        { name: 'About', href: '/about', short: 'About' },
-        { name: 'Updates', href: '/updates', short: 'Updates' },
-        { name: 'Contact', href: '/contact', short: 'Contact' },
+        { name: 'Home', href: '' },
+        { name: 'Projects', href: '/projects' },
+        { name: 'About', href: '/about' },
+        { name: 'Updates', href: '/updates' },
+        { name: 'Contact', href: '/contact' },
     ],
     tr: [
-        { name: 'Ana Sayfa', href: '', short: 'Ana' },
-        { name: 'Projeler', href: '/projects', short: 'Proje' },
-        { name: 'Hakkında', href: '/about', short: 'Hakkında' },
-        { name: 'Güncellemeler', href: '/updates', short: 'Güncelle' },
-        { name: 'İletişim', href: '/contact', short: 'İletişim' },
+        { name: 'Ana Sayfa', href: '' },
+        { name: 'Projeler', href: '/projects' },
+        { name: 'Hakkında', href: '/about' },
+        { name: 'Güncellemeler', href: '/updates' },
+        { name: 'İletişim', href: '/contact' },
     ],
 };
 
@@ -32,15 +32,76 @@ export default function Header({ locale }: HeaderProps) {
     const nav = navigation[locale];
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-    return (
-        <header style={styles.header}>
-            <div className="container" style={styles.container}>
-                <Link href={`/${locale}`} style={styles.logo}>
-                    Kepce Labs
-                </Link>
+    const toggleMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+    const closeMenu = () => setMobileMenuOpen(false);
 
-                {/* Desktop Navigation */}
-                <nav style={styles.desktopNav} className="desktop-nav">
+    return (
+        <>
+            <header style={styles.header}>
+                <div className="container" style={styles.container}>
+                    <Link href={`/${locale}`} style={styles.logo}>
+                        Kepce Labs
+                    </Link>
+
+                    {/* Desktop Navigation */}
+                    <nav style={styles.desktopNav} className="desktop-nav">
+                        {nav.map((item) => {
+                            const href = `/${locale}${item.href}`;
+                            const isActive = pathname === href;
+
+                            return (
+                                <Link
+                                    key={item.name}
+                                    href={href}
+                                    style={{
+                                        ...styles.navLink,
+                                        ...(isActive ? styles.navLinkActive : {}),
+                                    }}
+                                >
+                                    {item.name}
+                                </Link>
+                            );
+                        })}
+                        <LanguageSwitcher locale={locale} />
+                    </nav>
+
+                    {/* Mobile Hamburger Button */}
+                    <button
+                        onClick={toggleMenu}
+                        style={styles.hamburger}
+                        className="mobile-hamburger"
+                        aria-label="Toggle menu"
+                    >
+                        <span style={{
+                            ...styles.hamburgerLine,
+                            ...(mobileMenuOpen ? styles.hamburgerLineTop : {}),
+                        }} />
+                        <span style={{
+                            ...styles.hamburgerLine,
+                            ...(mobileMenuOpen ? styles.hamburgerLineMiddle : {}),
+                        }} />
+                        <span style={{
+                            ...styles.hamburgerLine,
+                            ...(mobileMenuOpen ? styles.hamburgerLineBottom : {}),
+                        }} />
+                    </button>
+                </div>
+            </header>
+
+            {/* Mobile Menu Overlay */}
+            {mobileMenuOpen && (
+                <div style={styles.overlay} onClick={closeMenu} />
+            )}
+
+            {/* Mobile Menu Panel */}
+            <div
+                style={{
+                    ...styles.mobileMenu,
+                    transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
+                }}
+                className="mobile-menu"
+            >
+                <nav style={styles.mobileNav}>
                     {nav.map((item) => {
                         const href = `/${locale}${item.href}`;
                         const isActive = pathname === href;
@@ -49,54 +110,36 @@ export default function Header({ locale }: HeaderProps) {
                             <Link
                                 key={item.name}
                                 href={href}
+                                onClick={closeMenu}
                                 style={{
-                                    ...styles.navLink,
-                                    ...(isActive ? styles.navLinkActive : {}),
+                                    ...styles.mobileNavLink,
+                                    ...(isActive ? styles.mobileNavLinkActive : {}),
                                 }}
                             >
                                 {item.name}
                             </Link>
                         );
                     })}
-                    <LanguageSwitcher locale={locale} />
-                </nav>
-
-                {/* Mobile Navigation */}
-                <nav style={styles.mobileNav} className="mobile-nav">
-                    {nav.slice(0, 3).map((item) => {
-                        const href = `/${locale}${item.href}`;
-                        const isActive = pathname === href;
-
-                        return (
-                            <Link
-                                key={item.name}
-                                href={href}
-                                style={{
-                                    ...styles.mobileNavLink,
-                                    ...(isActive ? styles.navLinkActive : {}),
-                                }}
-                            >
-                                {item.short}
-                            </Link>
-                        );
-                    })}
-                    <LanguageSwitcher locale={locale} />
+                    <div style={styles.mobileLanguageSwitcher}>
+                        <LanguageSwitcher locale={locale} />
+                    </div>
                 </nav>
             </div>
 
             <style jsx global>{`
-                @media (min-width: 641px) {
-                    .mobile-nav {
+                @media (min-width: 769px) {
+                    .mobile-hamburger,
+                    .mobile-menu {
                         display: none !important;
                     }
                 }
-                @media (max-width: 640px) {
+                @media (max-width: 768px) {
                     .desktop-nav {
                         display: none !important;
                     }
                 }
             `}</style>
-        </header>
+        </>
     );
 }
 
@@ -124,11 +167,75 @@ const styles = {
         gap: 'var(--space-lg)',
         alignItems: 'center',
     },
+    hamburger: {
+        display: 'flex',
+        flexDirection: 'column' as const,
+        justifyContent: 'space-around',
+        width: '28px',
+        height: '24px',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        padding: 0,
+        zIndex: 101,
+    },
+    hamburgerLine: {
+        width: '100%',
+        height: '2px',
+        backgroundColor: 'var(--color-text)',
+        borderRadius: '2px',
+        transition: 'all 0.3s ease',
+        transformOrigin: 'center',
+    },
+    hamburgerLineTop: {
+        transform: 'translateY(11px) rotate(45deg)',
+    },
+    hamburgerLineMiddle: {
+        opacity: 0,
+    },
+    hamburgerLineBottom: {
+        transform: 'translateY(-11px) rotate(-45deg)',
+    },
+    overlay: {
+        position: 'fixed' as const,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        zIndex: 98,
+        backdropFilter: 'blur(2px)',
+    },
+    mobileMenu: {
+        position: 'fixed' as const,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        width: '280px',
+        maxWidth: '80vw',
+        backgroundColor: 'var(--color-bg)',
+        borderLeft: '1px solid var(--color-border)',
+        zIndex: 99,
+        transition: 'transform 0.3s ease',
+        overflowY: 'auto' as const,
+    },
     mobileNav: {
         display: 'flex',
-        gap: 'var(--space-sm)',
-        alignItems: 'center',
-        fontSize: '0.875rem',
+        flexDirection: 'column' as const,
+        padding: 'var(--space-2xl) var(--space-lg)',
+        gap: 'var(--space-md)',
+    },
+    mobileNavLink: {
+        fontSize: '1.125rem',
+        fontWeight: 500,
+        color: 'var(--color-text-secondary)',
+        padding: 'var(--space-sm) 0',
+        borderBottom: '1px solid var(--color-border)',
+        transition: 'color var(--transition-fast)',
+    },
+    mobileNavLinkActive: {
+        color: 'var(--color-text)',
+        fontWeight: 600,
     },
     navLink: {
         fontSize: '0.95rem',
@@ -137,14 +244,12 @@ const styles = {
         transition: 'color var(--transition-fast)',
         whiteSpace: 'nowrap' as const,
     },
-    mobileNavLink: {
-        fontSize: '0.875rem',
-        fontWeight: 500,
-        color: 'var(--color-text-secondary)',
-        transition: 'color var(--transition-fast)',
-        whiteSpace: 'nowrap' as const,
-    },
     navLinkActive: {
         color: 'var(--color-text)',
+    },
+    mobileLanguageSwitcher: {
+        marginTop: 'var(--space-lg)',
+        paddingTop: 'var(--space-lg)',
+        borderTop: '1px solid var(--color-border)',
     },
 };

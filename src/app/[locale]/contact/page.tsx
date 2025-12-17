@@ -18,7 +18,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                             <span>hello@kepcelabs.com</span>
                         </a>
 
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" style={styles.link}>
+                        <a href="https://github.com/ali-gunes" target="_blank" rel="noopener noreferrer" style={styles.link}>
                             <span style={styles.icon}>💻</span>
                             <span>GitHub</span>
                         </a>
