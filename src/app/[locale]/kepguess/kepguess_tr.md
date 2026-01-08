@@ -129,4 +129,12 @@ KepGuess, teknoloji, oyun ve sosyal etkileşimin kesişimini keşfeden deneysel 
 
 ---
 
+## ⚖️ Yasal
+
+- [Gizlilik Politikası](./privacy)
+- [Kullanım Koşulları](./terms)
+- [Hesap Silme Talebi](./delete-account)
+
+---
+
 **Built with ❤️ by Kepce Labs**

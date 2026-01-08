@@ -114,3 +114,15 @@ KepGuess is part of the **Kepce Labs** ecosystem—a collection of experimental 
 **Package:** `com.kepcelabs.kepguess`  
 **Platform:** iOS & Android  
 **Status:** Beta Testing
+
+---
+
+## ⚖️ Legal
+
+- [Privacy Policy](./privacy)
+- [Terms of Service](./terms)
+- [Account Deletion Request](./delete-account)
+
+---
+
+**Built with ❤️ by Kepce Labs**
